@@ -1,6 +1,9 @@
 import 'dart:ui';
+import 'package:covid/API/api.dart';
+import 'package:covid/dashboard/infection.dart';
+import 'package:covid/dashboard/preventionBlock.dart';
 import 'package:covid/model/colorData.dart';
-import 'package:covid/model/dashboard/preventionBlock.dart';
+import 'package:covid/model/data.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:geolocator/geolocator.dart';
@@ -13,7 +16,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   String _countryName;
   String _state;
-
+  Future<SummaryData> summaryData;
   @override
   void initState() {
     super.initState();
@@ -47,11 +50,12 @@ class _MainPageState extends State<MainPage> {
     final coordinates = new Coordinates(location.latitude, location.longitude);
     List<Address> address =
         await Geocoder.local.findAddressesFromCoordinates(coordinates);
-    print(address.first.countryName);
 
     setState(() {
       _countryName = address[0].countryName;
       _state = address[0].locality;
+
+      summaryData = APIManager().getSummary(_countryName.toString());
     });
   }
 
@@ -153,7 +157,7 @@ class _MainPageState extends State<MainPage> {
               SizedBox(height: 10.0),
               Container(
                 width: width,
-                height: height * 0.35,
+                height: height * 0.55,
                 child: Card(
                     color: darkTone,
                     elevation: 3.0,
@@ -200,12 +204,17 @@ class _MainPageState extends State<MainPage> {
                                           fontSize: width * 0.045,
                                           fontWeight: FontWeight.w600,
                                         ),
-                                      )
+                                      ),
                                     ],
                                   ),
                                 ],
                               ),
                             ],
+                          ),
+                          InfectionDetails(
+                            width: width,
+                            height: height,
+                            summary: summaryData,
                           ),
                         ],
                       ),

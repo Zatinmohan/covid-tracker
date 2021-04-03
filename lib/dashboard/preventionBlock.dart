@@ -41,7 +41,7 @@ class Preventions extends StatelessWidget {
                         child: Column(
                           children: [
                             CircleAvatar(
-                              backgroundColor: Color(0xff0f3460),
+                              backgroundColor: cardColor,
                               radius: height * 0.07,
                               backgroundImage: AssetImage("$image"),
                             ),

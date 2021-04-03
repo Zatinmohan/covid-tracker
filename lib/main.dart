@@ -1,4 +1,4 @@
-import 'package:covid/model/dashboard/dashboard.dart';
+import 'package:covid/dashboard/dashboard.dart';
 import 'package:covid/model/colorData.dart';
 import 'package:flutter/material.dart';
 
