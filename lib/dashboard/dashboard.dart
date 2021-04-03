@@ -16,6 +16,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   String _countryName;
   String _state;
+
   Future<SummaryData> summaryData;
   @override
   void initState() {
@@ -53,7 +54,7 @@ class _MainPageState extends State<MainPage> {
 
     setState(() {
       _countryName = address[0].countryName;
-      _state = address[0].locality;
+      _state = address[0].adminArea;
 
       summaryData = APIManager().getSummary(_countryName.toString());
     });
