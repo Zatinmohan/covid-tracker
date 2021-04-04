@@ -38,7 +38,7 @@ class StateDetails extends StatelessWidget {
                         color: Colors.grey,
                       ),
                     ),
-                    SizedBox(height: 8.0),
+                    SizedBox(height: 5.0),
                     RowLayout(
                       width: width,
                       color1: confirmed,
@@ -101,7 +101,7 @@ class RowLayout extends StatelessWidget {
         Expanded(
           child: Container(
             width: width * 0.5,
-            height: width * 0.35,
+            height: width * 0.33,
             child: Card(
                 elevation: 2.0,
                 shape: RoundedRectangleBorder(
@@ -120,7 +120,7 @@ class RowLayout extends StatelessWidget {
         Expanded(
           child: Container(
             width: width * 0.5,
-            height: width * 0.35,
+            height: width * 0.33,
             child: Card(
                 elevation: 2.0,
                 shape: RoundedRectangleBorder(

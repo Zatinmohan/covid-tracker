@@ -55,7 +55,7 @@ class InfectionDetails extends StatelessWidget {
                 ),
                 Container(
                   width: width * 0.86,
-                  height: height * 0.2,
+                  height: height * 0.18,
                   child: Card(
                     elevation: 2.0,
                     shape: RoundedRectangleBorder(
@@ -107,7 +107,7 @@ class TrackerWidget extends StatelessWidget {
     return Expanded(
       child: Container(
         width: width * 0.5,
-        height: width * 0.35,
+        height: width * 0.34,
         child: Card(
           elevation: 2.0,
           shape: RoundedRectangleBorder(
