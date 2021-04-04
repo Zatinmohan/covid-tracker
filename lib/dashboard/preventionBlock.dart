@@ -19,49 +19,51 @@ class Preventions extends StatelessWidget {
           child: Padding(
             padding:
                 EdgeInsets.only(left: 20.0, right: 20.0, top: height * 0.03),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text("Prevention",
-                  style: TextStyle(
-                    color: textColor,
-                    fontSize: width * 0.06,
-                    fontWeight: FontWeight.w500,
-                  )),
-              SizedBox(height: 20.0),
-              Expanded(
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: prevention.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    String name = prevention[index].name;
-                    String image = prevention[index].image;
-                    return Container(
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 10.0, right: 10.0),
-                        child: Column(
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: cardColor,
-                              radius: height * 0.07,
-                              backgroundImage: AssetImage("$image"),
-                            ),
-                            SizedBox(height: 10.0),
-                            Text(
-                              "$name",
-                              style: TextStyle(
-                                color: textColor,
-                                fontSize: width * 0.04,
-                                fontWeight: FontWeight.w500,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Prevention",
+                    style: TextStyle(
+                      color: textColor,
+                      fontSize: width * 0.06,
+                      fontWeight: FontWeight.w500,
+                    )),
+                SizedBox(height: 20.0),
+                Expanded(
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: prevention.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      String name = prevention[index].name;
+                      String image = prevention[index].image;
+                      return Container(
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                          child: Column(
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: cardColor,
+                                radius: height * 0.07,
+                                backgroundImage: AssetImage("$image"),
                               ),
-                            ),
-                          ],
+                              SizedBox(height: 10.0),
+                              Text(
+                                "$name",
+                                style: TextStyle(
+                                  color: textColor,
+                                  fontSize: width * 0.04,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                ),
-              )
-            ]),
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
           )),
     );
   }
