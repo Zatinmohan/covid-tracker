@@ -1,9 +1,9 @@
 import 'dart:ui';
 import 'package:covid/API/api.dart';
-import 'package:covid/dashboard/infection.dart';
 import 'package:covid/dashboard/preventionBlock.dart';
+import 'package:covid/dashboard/stateDetail.dart';
 import 'package:covid/model/colorData.dart';
-import 'package:covid/model/data.dart';
+import 'package:covid/model/sateDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:geolocator/geolocator.dart';
@@ -17,7 +17,7 @@ class _MainPageState extends State<MainPage> {
   String _countryName;
   String _state;
 
-  Future<SummaryData> summaryData;
+  Future<List<StateModel>> summaryData;
   @override
   void initState() {
     super.initState();
@@ -158,7 +158,7 @@ class _MainPageState extends State<MainPage> {
               SizedBox(height: 10.0),
               Container(
                 width: width,
-                height: height * 0.55,
+                height: height * 0.58,
                 child: Card(
                     color: darkTone,
                     elevation: 3.0,
@@ -212,10 +212,16 @@ class _MainPageState extends State<MainPage> {
                               ),
                             ],
                           ),
-                          InfectionDetails(
+                          // InfectionDetails(
+                          //   width: width,
+                          //   height: height,
+                          //   summary: summaryData,
+                          // ),
+                          StateDetails(
                             width: width,
                             height: height,
                             summary: summaryData,
+                            state: _state,
                           ),
                         ],
                       ),

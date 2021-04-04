@@ -1,7 +1,7 @@
 import 'package:covid/model/colorData.dart';
 import 'package:covid/model/data.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:intl/intl.dart';
 
 class InfectionDetails extends StatelessWidget {
