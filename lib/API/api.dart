@@ -15,7 +15,6 @@ class APIManager {
       if (response.statusCode == 200) {
         var jsonString = jsonDecode(response.body);
         _model = summaryDataFromJson(jsonString);
-        var x = 1;
       }
     } catch (e) {
       return null;

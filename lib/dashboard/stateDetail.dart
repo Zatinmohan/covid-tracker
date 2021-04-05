@@ -8,7 +8,6 @@ class StateDetails extends StatelessWidget {
       {Key key, this.width, this.height, this.summary, this.state})
       : super(key: key);
 
-  @override
   String getValues(int value) {
     NumberFormat numberFormat = NumberFormat.decimalPattern('hi');
     return numberFormat.format(value);

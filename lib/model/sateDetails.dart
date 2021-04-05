@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 List<StateModel> summaryDataFromJson(var str) =>
     List<StateModel>.from(str.map((x) => StateModel.fromJson(x)));
 
