@@ -1,4 +1,5 @@
 import 'package:covid/dashboard/dashboard.dart';
+import 'package:covid/world/world.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:geocoder/geocoder.dart';
@@ -20,11 +21,14 @@ class _MainPageState extends State<MainPage> {
   String _countryName;
   String _state;
   Future<List<StateModel>> stateSummaryData;
+
   Future<SummaryData> countryData;
+  Future<SummaryData> worldData;
 
   @override
   void initState() {
     super.initState();
+    if (worldData == null) worldData = APIManager().getWorldSummary();
     if (_state == null || _countryName == null) getLocation();
   }
 
@@ -84,7 +88,7 @@ class _MainPageState extends State<MainPage> {
                   stateSummaryData: stateSummaryData,
                 )
               : (_selectedIndex == 1
-                  ? Center(child: Text("World Page"))
+                  ? WorldPage(globalData: worldData)
                   : Center(child: Text("Setting Paage"))),
         ),
       ),

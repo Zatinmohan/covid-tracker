@@ -34,4 +34,17 @@ class APIManager {
     }
     return _model;
   }
+
+  Future<SummaryData> getWorldSummary() async {
+    try {
+      var response = await http.get(URLs.baseUrl);
+      if (response.statusCode == 200) {
+        var jsonString = jsonDecode(response.body);
+        _model = SummaryData.fromJson(jsonString);
+      }
+    } catch (e) {
+      return null;
+    }
+    return _model;
+  }
 }

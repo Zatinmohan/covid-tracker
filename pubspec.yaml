@@ -33,6 +33,7 @@ dependencies:
   font_awesome_flutter:
   http:
   intl:
+  flutter_circular_chart:
 
 dev_dependencies:
   flutter_test:
