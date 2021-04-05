@@ -1,6 +1,7 @@
-import 'package:covid/dashboard/dashboard.dart';
 import 'package:covid/model/colorData.dart';
 import 'package:flutter/material.dart';
+
+import 'mainpage.dart';
 
 void main() {
   runApp(MyApp());
