@@ -4,6 +4,7 @@ import 'package:covid/API/URL.dart';
 import 'package:covid/model/data.dart';
 
 import 'package:covid/model/sateDetails.dart';
+import 'package:covid/model/summaryList.dart';
 import 'package:http/http.dart' as http;
 
 class APIManager {
@@ -41,6 +42,19 @@ class APIManager {
       if (response.statusCode == 200) {
         var jsonString = jsonDecode(response.body);
         _model = SummaryData.fromJson(jsonString);
+      }
+    } catch (e) {
+      return null;
+    }
+    return _model;
+  }
+
+  Future<List<SummaryList>> getMonthlySummary() async {
+    try {
+      var response = await http.get(URLs.getMonthlyList());
+      if (response.statusCode == 200) {
+        var jsonString = jsonDecode(response.body);
+        _model = summaryListFromJson(jsonString);
       }
     } catch (e) {
       return null;

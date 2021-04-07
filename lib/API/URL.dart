@@ -8,4 +8,8 @@ class URLs {
   static String getCountry(String country) {
     return baseUrl + "countries" + "/" + country;
   }
+
+  static String getMonthlyList() {
+    return baseUrl + "daily";
+  }
 }

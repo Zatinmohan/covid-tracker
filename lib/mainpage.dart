@@ -1,4 +1,5 @@
 import 'package:covid/dashboard/dashboard.dart';
+import 'package:covid/model/summaryList.dart';
 import 'package:covid/world/world.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -21,6 +22,7 @@ class _MainPageState extends State<MainPage> {
   String _countryName;
   String _state;
   Future<List<StateModel>> stateSummaryData;
+  Future<List<SummaryList>> summaryList;
 
   Future<SummaryData> countryData;
   Future<SummaryData> worldData;
@@ -30,6 +32,7 @@ class _MainPageState extends State<MainPage> {
     super.initState();
     if (worldData == null) worldData = APIManager().getWorldSummary();
     if (_state == null || _countryName == null) getLocation();
+    if (summaryList == null) summaryList = APIManager().getMonthlySummary();
   }
 
   Future<void> getLocation() async {
@@ -88,8 +91,11 @@ class _MainPageState extends State<MainPage> {
                   stateSummaryData: stateSummaryData,
                 )
               : (_selectedIndex == 1
-                  ? WorldPage(globalData: worldData)
-                  : Center(child: Text("Setting Paage"))),
+                  ? WorldPage(
+                      globalData: worldData,
+                      summaryList: summaryList,
+                    )
+                  : Center(child: Text("Setting Page"))),
         ),
       ),
       bottomNavigationBar: ClipRRect(

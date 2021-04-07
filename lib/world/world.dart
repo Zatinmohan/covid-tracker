@@ -1,14 +1,15 @@
 import 'package:covid/dashboard/infection.dart';
-import 'package:covid/dashboard/stateDetail.dart';
 import 'package:covid/model/colorData.dart';
 import 'package:covid/model/data.dart';
+import 'package:covid/model/summaryList.dart';
 import 'package:covid/world/graphDetails.dart';
 import 'package:flutter/material.dart';
 
 class WorldPage extends StatelessWidget {
   Future<SummaryData> globalData;
 
-  WorldPage({Key key, this.globalData}) : super(key: key);
+  Future<List<SummaryList>> summaryList;
+  WorldPage({Key key, this.globalData, this.summaryList}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -48,6 +49,7 @@ class WorldPage extends StatelessWidget {
                       height: height,
                       width: width,
                       summary: globalData,
+                      graphData: summaryList,
                     ),
                     SizedBox(height: 10.0),
                   ],
