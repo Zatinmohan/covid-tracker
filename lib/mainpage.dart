@@ -1,5 +1,6 @@
 import 'package:covid/dashboard/dashboard.dart';
 import 'package:covid/model/summaryList.dart';
+import 'package:covid/settings/settings.dart';
 import 'package:covid/world/world.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -95,7 +96,7 @@ class _MainPageState extends State<MainPage> {
                       globalData: worldData,
                       summaryList: summaryList,
                     )
-                  : Center(child: Text("Setting Page"))),
+                  : SettingPage()),
         ),
       ),
       bottomNavigationBar: ClipRRect(
