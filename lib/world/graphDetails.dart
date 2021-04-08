@@ -1,6 +1,5 @@
 import 'package:covid/model/colorData.dart';
 import 'package:covid/model/data.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
 // import 'package:flutter_circular_chart/flutter_circular_chart.dart';

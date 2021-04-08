@@ -1,4 +1,3 @@
-import 'package:covid/model/colorData.dart';
 import 'package:covid/settings/aboutDev.dart';
 import 'package:flutter/material.dart';
 
