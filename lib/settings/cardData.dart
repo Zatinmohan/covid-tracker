@@ -41,7 +41,7 @@ class _CardDetailsState extends State<CardDetails> {
                   "${widget.title}",
                   style: TextStyle(
                     color: textColor,
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.w500,
                     fontSize: widget.data1 != null
                         ? widget.width * 0.07
                         : widget.width * 0.06,

@@ -36,6 +36,7 @@ dependencies:
   flutter_circular_chart:
   fl_chart:
   url_launcher:
+  animated_card:
 
 dev_dependencies:
   flutter_test:

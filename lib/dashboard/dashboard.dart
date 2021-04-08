@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:animated_card/animated_card.dart';
 import 'package:covid/dashboard/stateDetail.dart';
 import 'package:covid/dashboard/upperPart.dart';
 import 'package:covid/model/colorData.dart';
@@ -70,52 +71,58 @@ class CountryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: darkTone,
-      elevation: 3.0,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28.0)),
-      child: Padding(
-        padding: EdgeInsets.only(left: 20.0, right: 20.0, top: height * 0.03),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Country Tracker",
-                    style: TextStyle(
-                      color: textColor,
-                      fontWeight: FontWeight.w500,
-                      fontSize: width * 0.06,
-                    )),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.place,
-                      color: textColor,
-                      size: width * 0.08,
-                    ),
-                    SizedBox(width: 8.0),
-                    Text(
-                      "$_countryName",
+    return AnimatedCard(
+      direction: AnimatedCardDirection.left,
+      initDelay: Duration(milliseconds: 100),
+      duration: Duration(seconds: 1),
+      child: Card(
+        color: darkTone,
+        elevation: 3.0,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(28.0)),
+        child: Padding(
+          padding: EdgeInsets.only(left: 20.0, right: 20.0, top: height * 0.03),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Country Tracker",
                       style: TextStyle(
                         color: textColor,
-                        fontSize: width * 0.045,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w500,
+                        fontSize: width * 0.06,
+                      )),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.place,
+                        color: textColor,
+                        size: width * 0.08,
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            SizedBox(height: 10.0),
-            InfectionDetails(
-              width: width,
-              height: height,
-              summary: countryData,
-              graphData: null,
-            ),
-            SizedBox(height: 10.0),
-          ],
+                      SizedBox(width: 8.0),
+                      Text(
+                        "$_countryName",
+                        style: TextStyle(
+                          color: textColor,
+                          fontSize: width * 0.045,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(height: 10.0),
+              InfectionDetails(
+                width: width,
+                height: height,
+                summary: countryData,
+                graphData: null,
+              ),
+              SizedBox(height: 10.0),
+            ],
+          ),
         ),
       ),
     );
@@ -142,66 +149,72 @@ class StateWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-        color: darkTone,
-        elevation: 3.0,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(28.0)),
-        child: Padding(
-          padding: EdgeInsets.only(left: 20.0, right: 20.0, top: height * 0.03),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("State Tracker",
-                      style: TextStyle(
-                        color: textColor,
-                        fontWeight: FontWeight.w500,
-                        fontSize: width * 0.06,
-                      )),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.place,
-                        color: textColor,
-                        size: width * 0.08,
-                      ),
-                      SizedBox(width: 10.0),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "$_state",
-                            style: TextStyle(
-                              color: textColor,
-                              fontSize: width * 0.045,
+    return AnimatedCard(
+      direction: AnimatedCardDirection.left, //Initial animation direction
+      initDelay: Duration(milliseconds: 100), //Delay to initial animation
+      duration: Duration(seconds: 1),
+      child: Card(
+          color: darkTone,
+          elevation: 3.0,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(28.0)),
+          child: Padding(
+            padding:
+                EdgeInsets.only(left: 20.0, right: 20.0, top: height * 0.03),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("State Tracker",
+                        style: TextStyle(
+                          color: textColor,
+                          fontWeight: FontWeight.w500,
+                          fontSize: width * 0.06,
+                        )),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.place,
+                          color: textColor,
+                          size: width * 0.08,
+                        ),
+                        SizedBox(width: 10.0),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "$_state",
+                              style: TextStyle(
+                                color: textColor,
+                                fontSize: width * 0.045,
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 2.0),
-                          Text(
-                            "$_countryName",
-                            style: TextStyle(
-                              color: textColor,
-                              fontSize: width * 0.045,
-                              fontWeight: FontWeight.w600,
+                            SizedBox(height: 2.0),
+                            Text(
+                              "$_countryName",
+                              style: TextStyle(
+                                color: textColor,
+                                fontSize: width * 0.045,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              StateDetails(
-                width: width,
-                height: height,
-                summary: summaryData,
-                state: _state,
-              ),
-              SizedBox(height: 10.0),
-            ],
-          ),
-        ));
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                StateDetails(
+                  width: width,
+                  height: height,
+                  summary: summaryData,
+                  state: _state,
+                ),
+                SizedBox(height: 10.0),
+              ],
+            ),
+          )),
+    );
   }
 }
