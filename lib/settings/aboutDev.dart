@@ -35,7 +35,7 @@ class _AboutDeveloperState extends State<AboutDeveloper> {
                     "About Developer",
                     style: TextStyle(
                       color: textColor,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w500,
                       fontSize: widget.width * 0.06,
                     ),
                   ),

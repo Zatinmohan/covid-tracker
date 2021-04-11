@@ -23,9 +23,19 @@ class SettingPage extends StatelessWidget {
           height: height,
           width: width,
           title: "Disclaimer",
-          data1:
+          data1: null,
+          data2:
               "This data is not approved by government. The data provided to the users is maintained and verified by Hopkins University",
-          data2: null,
+        ),
+        SizedBox(height: 10.0),
+        CardDetails(
+          height: height,
+          width: width,
+          title: "About Application",
+          data1: null,
+          //"This application is for education purpose. The data shown to the user is not officially verified. Also, this application uses the user location to get the current state and country stats.",
+          data2:
+              "This application is for education purpose. The data shown to the user is not officially verified. Also, this application uses the user current location to get the user's state and country stats.",
         ),
         SizedBox(height: 10.0),
         CardDetails(

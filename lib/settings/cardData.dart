@@ -30,7 +30,7 @@ class _CardDetailsState extends State<CardDetails> {
       ),
       child: Padding(
         padding:
-            EdgeInsets.only(top: widget.height * 0.03, left: 20.0, right: 20.0),
+            EdgeInsets.only(top: widget.height * 0.04, left: 20.0, right: 20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -42,12 +42,10 @@ class _CardDetailsState extends State<CardDetails> {
                   style: TextStyle(
                     color: textColor,
                     fontWeight: FontWeight.w500,
-                    fontSize: widget.data1 != null
-                        ? widget.width * 0.07
-                        : widget.width * 0.06,
+                    fontSize: widget.width * 0.06,
                   ),
                 ),
-                widget.data1 == null
+                widget.data2 == null
                     ? IconButton(
                         icon: Icon(
                           Icons.keyboard_arrow_down,
@@ -80,18 +78,20 @@ class _CardDetailsState extends State<CardDetails> {
                       )
                     : SizedBox.shrink(),
                 widget.data2 != null
-                    ? Text(
-                        "${widget.data2}",
-                        style: TextStyle(
-                          color: textColor,
-                          fontSize: widget.width * 0.05,
+                    ? Flexible(
+                        child: Text(
+                          "${widget.data2}",
+                          style: TextStyle(
+                            color: textColor,
+                            fontSize: widget.width * 0.05,
+                          ),
                         ),
                       )
                     : SizedBox.shrink(),
               ],
             ),
             SizedBox(height: 5.0),
-            widget.data2 == null && widget.data1 != null
+            widget.title == "Disclaimer"
                 ? RaisedButton.icon(
                     color: backgroundColor,
                     shape: RoundedRectangleBorder(
