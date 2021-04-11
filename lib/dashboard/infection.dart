@@ -1,3 +1,4 @@
+import 'package:covid/dashboard/statelist.dart';
 import 'package:covid/model/colorData.dart';
 import 'package:covid/model/data.dart';
 import 'package:covid/world/barGraph.dart';
@@ -90,8 +91,6 @@ class _InfectionDetailsState extends State<InfectionDetails> {
                   onTap: () {
                     setState(() {
                       _isDeath = !_isDeath;
-                      // print("$_isDeath");
-                      // print("Deaths");
                     });
                   },
                   child: Container(

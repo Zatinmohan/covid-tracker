@@ -1,3 +1,4 @@
+import 'package:covid/dashboard/statelist.dart';
 import 'package:covid/model/colorData.dart';
 import 'package:covid/model/sateDetails.dart';
 import 'package:flutter/material.dart';
@@ -31,11 +32,26 @@ class StateDetails extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 8.0),
-                    Text(
-                      "Last Updated: $readableDate",
-                      style: TextStyle(
-                        color: Colors.grey,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Last Updated: $readableDate",
+                          style: TextStyle(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        IconButton(
+                            icon: Icon(Icons.arrow_forward, color: textColor),
+                            onPressed: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => StateList(
+                                          stateList: summary,
+                                          width: width,
+                                          height: height,
+                                        )))),
+                      ],
                     ),
                     SizedBox(height: 5.0),
                     RowLayout(
