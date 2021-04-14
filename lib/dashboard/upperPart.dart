@@ -1,11 +1,15 @@
+import 'package:covid/dashboard/dashboard.dart';
 import 'package:covid/dashboard/preventionBlock.dart';
+import 'package:covid/model/callData.dart';
 import 'package:covid/model/colorData.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DashBoardUpper extends StatelessWidget {
-  final width, height;
+  final width, height, countryName;
 
-  const DashBoardUpper({Key key, this.width, this.height}) : super(key: key);
+  const DashBoardUpper({Key key, this.width, this.height, this.countryName})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -58,8 +62,13 @@ class DashBoardUpper extends StatelessWidget {
                     width: width * 0.4,
                     height: height * 0.07,
                     child: RaisedButton(
-                      onPressed: () {
-                        print("HelpLine pressed");
+                      onPressed: () async {
+                        var phone = callData.entries.firstWhere(
+                            (element) => element.key == countryName,
+                            orElse: () => null);
+
+                        String p = "tel:" + phone.value;
+                        if (await canLaunch(p)) await launch(p);
                       },
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),

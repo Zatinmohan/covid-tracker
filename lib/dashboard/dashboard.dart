@@ -30,7 +30,8 @@ class _DashBoardState extends State<DashBoard> {
       children: [
         Column(
           children: [
-            DashBoardUpper(width: width, height: height),
+            DashBoardUpper(
+                width: width, height: height, countryName: widget.countryName),
             SizedBox(height: 10.0),
             StateWidget(
               width: width,
