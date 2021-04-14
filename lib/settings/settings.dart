@@ -33,7 +33,6 @@ class SettingPage extends StatelessWidget {
           width: width,
           title: "About Application",
           data1: null,
-          //"This application is for education purpose. The data shown to the user is not officially verified. Also, this application uses the user location to get the current state and country stats.",
           data2:
               "This application is for education purpose. The data shown to the user is not officially verified. Also, this application uses the user current location to get the user's state and country stats.",
         ),
