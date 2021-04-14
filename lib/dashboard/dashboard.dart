@@ -120,6 +120,7 @@ class CountryWidget extends StatelessWidget {
                 height: height,
                 summary: countryData,
                 graphData: null,
+                pageno: 1,
               ),
               SizedBox(height: 10.0),
             ],

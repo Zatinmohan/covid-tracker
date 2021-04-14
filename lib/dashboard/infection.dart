@@ -5,11 +5,17 @@ import 'package:covid/world/barGraph.dart';
 import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
+import 'package:toast/toast.dart';
 
 class InfectionDetails extends StatefulWidget {
-  final width, height, summary, graphData;
+  final width, height, summary, graphData, pageno;
   InfectionDetails(
-      {Key key, this.width, this.height, this.summary, this.graphData})
+      {Key key,
+      this.width,
+      this.height,
+      this.summary,
+      this.graphData,
+      this.pageno})
       : super(key: key);
 
   @override
@@ -64,14 +70,22 @@ class _InfectionDetailsState extends State<InfectionDetails> {
                           ),
                         ),
                         Expanded(
-                          child: TrackerWidget(
-                            width: widget.width,
-                            color: recovered,
-                            subtitle: "Recovered",
-                            data: getValues(
-                              snapshot.data.recovered.value,
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                if (widget.pageno == 2)
+                                  Toast.show("No Recovery Data", context);
+                              });
+                            },
+                            child: TrackerWidget(
+                              width: widget.width,
+                              color: recovered,
+                              subtitle: "Recovered",
+                              data: getValues(
+                                snapshot.data.recovered.value,
+                              ),
+                              icon: Icons.recommend,
                             ),
-                            icon: Icons.recommend,
                           ),
                         ),
                       ],

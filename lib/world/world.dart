@@ -57,6 +57,7 @@ class WorldPage extends StatelessWidget {
                         width: width,
                         summary: globalData,
                         graphData: summaryList,
+                        pageno: 2,
                       ),
                       SizedBox(height: 10.0),
                     ],

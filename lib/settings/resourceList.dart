@@ -67,6 +67,18 @@ class RecourseList extends StatelessWidget {
             subtitle: "URL opener library",
             link: "https://pub.dev/packages/url_launcher",
           ),
+          ListDetail(
+            icon: FontAwesomeIcons.idCard,
+            title: "Animated Card",
+            subtitle: "Card Library",
+            link: "https://pub.dev/packages/animated_card",
+          ),
+          ListDetail(
+            icon: Icons.message,
+            title: "Flutter Toast",
+            subtitle: "Message Display Library",
+            link: "https://pub.dev/packages/toast",
+          )
         ],
       ),
     );

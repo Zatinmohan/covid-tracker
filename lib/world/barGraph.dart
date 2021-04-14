@@ -119,6 +119,34 @@ class _BarGraphState extends State<BarGraph> {
                       borderData: FlBorderData(
                         show: false,
                       ),
+                      gridData: FlGridData(
+                        show: true,
+                        horizontalInterval:
+                            widget.confirmedVerified ? 10000000 : 500000,
+                        getDrawingHorizontalLine: (value) {
+                          if (widget.confirmedVerified) {
+                            if (value == 50000000) {
+                              return FlLine(
+                                  color: Color(0xff2a2747), strokeWidth: 2);
+                            }
+                            if (value == 100000000)
+                              return FlLine(
+                                  color: Color(0xff2a2747), strokeWidth: 2);
+                          } else {
+                            if (value == 1000000) {
+                              return FlLine(
+                                  color: Color(0xff2a2747), strokeWidth: 2);
+                            }
+                            if (value == 2000000)
+                              return FlLine(
+                                  color: Color(0xff2a2747), strokeWidth: 2);
+                          }
+                          return FlLine(
+                            color: const Color(0xff2a2747),
+                            strokeWidth: 0.5,
+                          );
+                        },
+                      ),
                       barGroups: [
                         BarChartGroupData(
                           x: 0,

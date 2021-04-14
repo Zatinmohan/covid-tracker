@@ -37,6 +37,7 @@ dependencies:
   fl_chart:
   url_launcher:
   animated_card:
+  toast:
 
 dev_dependencies:
   flutter_test:

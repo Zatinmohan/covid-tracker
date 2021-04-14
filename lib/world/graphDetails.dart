@@ -2,7 +2,6 @@ import 'package:covid/model/colorData.dart';
 import 'package:covid/model/data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
-// import 'package:flutter_circular_chart/flutter_circular_chart.dart';
 
 class GraphCard extends StatelessWidget {
   final width, height;
@@ -36,32 +35,11 @@ class GraphCard extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            //SizedBox(height: 8.0),
             FutureBuilder<SummaryData>(
                 future: globalData,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
                     if (snapshot.hasData) {
-                      // List<PieChartSectionData> data = [
-                      //   PieChartSectionData(
-                      //     value: snapshot.data.confirmed.value.toDouble(),
-                      //     color: confirmed,
-                      //     radius: width * 0.25,
-                      //     showTitle: false,
-                      //   ),
-                      //   PieChartSectionData(
-                      //     value: snapshot.data.recovered.value.toDouble(),
-                      //     color: recovered,
-                      //     radius: width * 0.25,
-                      //     showTitle: false,
-                      //   ),
-                      //   PieChartSectionData(
-                      //     value: snapshot.data.deaths.value.toDouble(),
-                      //     color: death,
-                      //     radius: width * 0.25,
-                      //     showTitle: false,
-                      //   ),
-                      // ];
                       List<CircularStackEntry> data = <CircularStackEntry>[
                         new CircularStackEntry(<CircularSegmentEntry>[
                           new CircularSegmentEntry(
@@ -76,23 +54,6 @@ class GraphCard extends StatelessWidget {
                       ];
                       return Row(
                         children: [
-                          // Container(
-                          //   width: width * 0.5,
-                          //   height: height * 0.32,
-                          //   child: PieChart(
-                          //     PieChartData(
-                          //       startDegreeOffset: 270,
-                          //       sectionsSpace: 0,
-                          //       centerSpaceRadius: 0,
-                          //       sections: data,
-                          //       borderData: FlBorderData(
-                          //         show: false,
-                          //       ),
-                          //     ),
-                          //     swapAnimationDuration:
-                          //         Duration(milliseconds: 400),
-                          //   ),
-                          // ),
                           AnimatedCircularChart(
                             key: _chartKey,
                             size: Size(width * 0.6, height * 0.32),
