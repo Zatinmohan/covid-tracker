@@ -1,4 +1,3 @@
-import 'package:covid/dashboard/statelist.dart';
 import 'package:covid/model/colorData.dart';
 import 'package:covid/model/data.dart';
 import 'package:covid/world/barGraph.dart';
@@ -9,6 +8,7 @@ import 'package:toast/toast.dart';
 
 class InfectionDetails extends StatefulWidget {
   final width, height, summary, graphData, pageno;
+
   InfectionDetails(
       {Key key,
       this.width,
@@ -66,6 +66,7 @@ class _InfectionDetailsState extends State<InfectionDetails> {
                                 snapshot.data.confirmed.value,
                               ),
                               icon: Icons.verified,
+                              page: widget.pageno,
                             ),
                           ),
                         ),
@@ -85,6 +86,7 @@ class _InfectionDetailsState extends State<InfectionDetails> {
                                 snapshot.data.recovered.value,
                               ),
                               icon: Icons.recommend,
+                              page: widget.pageno,
                             ),
                           ),
                         ),
@@ -116,11 +118,13 @@ class _InfectionDetailsState extends State<InfectionDetails> {
                       ),
                       color: cardColor,
                       child: CardDetails(
-                          color: death,
-                          width: widget.width,
-                          subtitle: "Death",
-                          data: getValues(snapshot.data.deaths.value),
-                          icon: Icons.dangerous),
+                        color: death,
+                        width: widget.width,
+                        subtitle: "Death",
+                        data: getValues(snapshot.data.deaths.value),
+                        icon: Icons.dangerous,
+                        page: widget.pageno,
+                      ),
                     ),
                   ),
                 ),
@@ -161,9 +165,10 @@ class TrackerWidget extends StatelessWidget {
     this.data,
     this.subtitle,
     this.icon,
+    this.page,
   }) : super(key: key);
 
-  final width, color, subtitle, data, icon;
+  final width, color, subtitle, data, icon, page;
 
   @override
   Widget build(BuildContext context) {
@@ -179,6 +184,7 @@ class TrackerWidget extends StatelessWidget {
         subtitle: subtitle,
         data: data,
         icon: icon,
+        page: page,
       ),
     );
   }
@@ -192,6 +198,7 @@ class CardDetails extends StatelessWidget {
     @required this.subtitle,
     this.data,
     this.icon,
+    this.page,
   }) : super(key: key);
 
   final color;
@@ -199,6 +206,7 @@ class CardDetails extends StatelessWidget {
   final subtitle;
   final data;
   final icon;
+  final page;
 
   @override
   Widget build(BuildContext context) {
@@ -230,6 +238,15 @@ class CardDetails extends StatelessWidget {
               color: color,
             ),
           ),
+          page == 2
+              ? Align(
+                  alignment: Alignment.bottomRight,
+                  child: Icon(
+                    Icons.arrow_downward,
+                    color: Colors.grey,
+                    size: 18.0,
+                  ))
+              : SizedBox.shrink()
         ],
       ),
     );
