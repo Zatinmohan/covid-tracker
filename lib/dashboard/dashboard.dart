@@ -115,13 +115,22 @@ class CountryWidget extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 10.0),
-              InfectionDetails(
-                width: width,
-                height: height,
-                summary: countryData,
-                graphData: null,
-                pageno: 1,
-              ),
+              countryData != null
+                  ? InfectionDetails(
+                      width: width,
+                      height: height,
+                      summary: countryData,
+                      graphData: null,
+                      pageno: 1,
+                    )
+                  : Text(
+                      "Location Permission Denied",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 20.0,
+                      ),
+                    ),
               SizedBox(height: 10.0),
             ],
           ),
@@ -207,12 +216,21 @@ class StateWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                StateDetails(
-                  width: width,
-                  height: height,
-                  summary: summaryData,
-                  state: _state,
-                ),
+                summaryData != null
+                    ? StateDetails(
+                        width: width,
+                        height: height,
+                        summary: summaryData,
+                        state: _state,
+                      )
+                    : Text(
+                        "Location Permission Denied",
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20.0,
+                        ),
+                      ),
                 SizedBox(height: 10.0),
               ],
             ),

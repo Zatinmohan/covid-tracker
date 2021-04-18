@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:toast/toast.dart';
 
 import 'API/api.dart';
 import 'model/colorData.dart';
@@ -41,36 +42,46 @@ class _MainPageState extends State<MainPage> {
 
     LocationPermission permission;
 
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    try {
+      serviceEnabled = await Geolocator.isLocationServiceEnabled();
 
-    if (!serviceEnabled) return Future.error("Location Services are Disabled");
-    permission = await Geolocator.checkPermission();
-
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.deniedForever)
-        return Future.error(
-            "Location permission are permantely denied, we cannot request permission");
+      if (!serviceEnabled)
+        return Future.error("Location Services are Disabled");
+      permission = await Geolocator.checkPermission();
 
       if (permission == LocationPermission.denied) {
-        return Future.error("Location permission is denied");
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.deniedForever) {
+          Toast.show("Location permission is permantely denied", context);
+          return Future.error(
+              "Location permission are permantely denied, we cannot request permission");
+        }
+
+        if (permission == LocationPermission.denied) {
+          Toast.show("Location permission is denied", context);
+          return Future.error("Location permission is denied");
+        }
       }
+
+      var location = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+
+      final coordinates =
+          new Coordinates(location.latitude, location.longitude);
+      List<Address> address =
+          await Geocoder.local.findAddressesFromCoordinates(coordinates);
+
+      setState(() {
+        _countryName = address[0].countryName;
+        _state = address[0].adminArea;
+
+        stateSummaryData =
+            APIManager().getStateSummary(_countryName.toString());
+        countryData = APIManager().getCountrySummary(_countryName.toString());
+      });
+    } catch (e) {
+      return null;
     }
-
-    var location = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
-
-    final coordinates = new Coordinates(location.latitude, location.longitude);
-    List<Address> address =
-        await Geocoder.local.findAddressesFromCoordinates(coordinates);
-
-    setState(() {
-      _countryName = address[0].countryName;
-      _state = address[0].adminArea;
-
-      stateSummaryData = APIManager().getStateSummary(_countryName.toString());
-      countryData = APIManager().getCountrySummary(_countryName.toString());
-    });
   }
 
   void _onItemTap(int index) {
