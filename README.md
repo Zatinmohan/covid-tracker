@@ -1,5 +1,5 @@
 # Covid-Tracker
-Covid tracker application that covid data from [mathdroid/covid-19-api](https://github.com/mathdroid/covid-19-api)
+Covid tracker application that display covid data from [mathdroid/covid-19-api](https://github.com/mathdroid/covid-19-api)
 
 ## Demo
 [![Generic badge](https://img.shields.io/badge/DOWNLOAD-COVID_TRACKER-<COLOR>.svg)](https://github.com/Zatinmohan/covid-tracker/blob/main/covid-tracker.apk?raw=true)
