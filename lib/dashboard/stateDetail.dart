@@ -19,6 +19,16 @@ class StateDetails extends StatelessWidget {
     return FutureBuilder<List<StateModel>>(
       future: summary,
       builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.none) {
+          return Text(
+            "No Data",
+            style: TextStyle(
+              color: Colors.grey,
+              fontWeight: FontWeight.w600,
+              fontSize: width * 0.08,
+            ),
+          );
+        }
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {
             int i = 0;

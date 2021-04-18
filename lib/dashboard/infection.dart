@@ -35,6 +35,16 @@ class _InfectionDetailsState extends State<InfectionDetails> {
     return FutureBuilder<SummaryData>(
       future: widget.summary,
       builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.none) {
+          return Text(
+            "No Data",
+            style: TextStyle(
+              color: Colors.grey,
+              fontWeight: FontWeight.w600,
+              fontSize: widget.width * 0.08,
+            ),
+          );
+        }
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {
             return Column(
