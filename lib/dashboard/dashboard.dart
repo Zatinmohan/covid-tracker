@@ -114,14 +114,14 @@ class CountryWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 10.0),
-              InfectionDetails(
-                width: width,
-                height: height,
-                summary: countryData,
-                graphData: null,
-                pageno: 1,
-              ),
+             InfectionDetails(
+                      width: width,
+                      height: height,
+                      summary: countryData,
+                      graphData: null,
+                      pageno: 1,
+                    ),
+                  
               SizedBox(height: 10.0),
             ],
           ),

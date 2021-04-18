@@ -19,16 +19,19 @@ class StateDetails extends StatelessWidget {
     return FutureBuilder<List<StateModel>>(
       future: summary,
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.none) {
-          return Text(
-            "No Data",
-            style: TextStyle(
-              color: Colors.grey,
-              fontWeight: FontWeight.w600,
-              fontSize: width * 0.08,
-            ),
-          );
-        }
+        // if (snapshot.connectionState == ConnectionState.none) {
+        //   return Text(
+        //     "No Data",
+        //     style: TextStyle(
+        //       color: Colors.grey,
+        //       fontWeight: FontWeight.w600,
+        //       fontSize: width * 0.08,
+        //     ),
+        //   );
+        // }
+        if (snapshot.connectionState == ConnectionState.waiting)
+          return Center(child: CircularProgressIndicator());
+
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {
             int i = 0;
@@ -96,7 +99,8 @@ class StateDetails extends StatelessWidget {
           } else
             return Text("No Data");
         }
-        return Center(child: CircularProgressIndicator());
+        return SizedBox.shrink();
+        // return Center(child: CircularProgressIndicator());
       },
     );
   }
